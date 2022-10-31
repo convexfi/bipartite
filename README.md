@@ -1,12 +1,3 @@
----
-title: "bipartite README"
-output:
-  html_document:
-    keep_md: true
----
-
-
-
 # bipartite
 
 This repo contains numerical implementations of algorithms to estimate weighted, undirected, (possibly k-component) bipartite graphs.
@@ -131,6 +122,7 @@ node_labels[!mask] <- NA
 plot(net, vertex.size = c(rep(3, r), rep(5, q)),
      vertex.label = c(node_labels, selected_sectors),
      vertex.label.cex = 0.7, vertex.label.dist = 1.0,
+     vertex.frame.color = c(colors[stock_sectors_index], colors),
      layout = layout_nicely(net),
      vertex.label.family = "Helvetica", vertex.label.color = "black",
      vertex.shape = c(rep("circle", r), rep("square", q)),

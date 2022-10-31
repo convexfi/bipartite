@@ -130,7 +130,7 @@ node_labels[!mask] <- NA
 # plot network
 plot(net, vertex.size = c(rep(3, r), rep(5, q)),
      vertex.label = c(node_labels, selected_sectors),
-     vertex.label.cex = 0.8, vertex.label.dist = 1.0,
+     vertex.label.cex = 0.7, vertex.label.dist = 1.0,
      layout = layout_nicely(net),
      vertex.label.family = "Helvetica", vertex.label.color = "black",
      vertex.shape = c(rep("circle", r), rep("square", q)),

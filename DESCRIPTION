@@ -1,0 +1,27 @@
+Package: bipartite
+Title: Learning Bipartite Graphs: Heavy Tails and Multiple Components
+Version: 0.1.0
+Description: Learning bipartite and k-component bipartite graphs from financial datasets
+Author: Ze Vinicius
+Maintainer: Ze Vinicius <jvmirca@gmail.com>
+URL: https://github.com/mirca/fingraph/
+BugReports: https://github.com/mirca/fingraph/issues
+License: GPL-3 | file LICENSE
+Encoding: UTF-8
+LazyData: true
+Depends: spectralGraphTopology, devtools
+LinkingTo:
+    Rcpp,
+    RcppEigen
+Imports:
+    Rcpp,
+    MASS,
+    progress,
+    igraph,
+    spectralGraphTopology,
+    mvtnorm,
+    testthat
+RoxygenNote: 7.1.1
+Remotes:
+    mirca/spectralGraphTopology
+Suggests:

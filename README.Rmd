@@ -5,7 +5,19 @@ output:
     keep_md: true
 ---
 
-
+```{r, echo = FALSE}
+library(knitr)
+opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  fig.align = "center",
+  fig.retina = 2,
+  out.width = "75%",
+  dpi = 96
+)
+knit_hooks$set(pngquant = hook_pngquant)
+```
 
 # bipartite
 
@@ -17,8 +29,7 @@ This repo contains numerical implementations of algorithms to estimate weighted,
 **bipartite** depends on the development version of **spectralGraphTopology**.
 
 You can install the development version from GitHub:
-
-```r
+```{r, eval = FALSE}
 > devtools::install_github("mirca/spectralGraphTopology")
 > devtools::install_github("mirca/bipartite")
 ```
@@ -29,8 +40,7 @@ On MS Windows environments, make sure to install the most recent version of ``Rt
 ## Usage
 
 ### Clustering a network of S&P500 stocks
-
-```r
+```{r plot_sp500_stocks_network, message=FALSE}
 library(fitHeavyTail)
 library(xts)
 library(quantmod)
@@ -48,42 +58,7 @@ r <- ncol(stock_prices) - q
 # total nodes in the graph
 p <- r + q
 colnames(stock_prices)[1:r]
-#>   [1] "A"    "AAL"  "ABBV" "ABC"  "ABMD" "ABT"  "ADM"  "AEE"  "AEP"  "AES" 
-#>  [11] "AFL"  "AIG"  "AIV"  "AIZ"  "AJG"  "ALB"  "ALGN" "ALK"  "ALL"  "ALLE"
-#>  [21] "ALXN" "AMCR" "AME"  "AMGN" "AMP"  "AMT"  "ANTM" "AON"  "AOS"  "APA" 
-#>  [31] "APD"  "ARE"  "ATO"  "AVB"  "AVY"  "AWK"  "AXP"  "BA"   "BAC"  "BAX" 
-#>  [41] "BDX"  "BEN"  "BIIB" "BIO"  "BK"   "BKR"  "BLK"  "BLL"  "BMY"  "BSX" 
-#>  [51] "BXP"  "C"    "CAG"  "CAH"  "CAT"  "CB"   "CBOE" "CBRE" "CCI"  "CE"  
-#>  [61] "CERN" "CF"   "CFG"  "CHD"  "CHRW" "CI"   "CINF" "CL"   "CLX"  "CMA" 
-#>  [71] "CME"  "CMI"  "CMS"  "CNC"  "CNP"  "COF"  "COG"  "COO"  "COP"  "COST"
-#>  [81] "COTY" "CPB"  "CPRT" "CSX"  "CTAS" "CVS"  "CVX"  "D"    "DAL"  "DD"  
-#>  [91] "DE"   "DFS"  "DGX"  "DHR"  "DLR"  "DOV"  "DRE"  "DTE"  "DUK"  "DVA" 
-#> [101] "DVN"  "DXCM" "ECL"  "ED"   "EFX"  "EIX"  "EL"   "EMN"  "EMR"  "EOG" 
-#> [111] "EQIX" "EQR"  "ES"   "ESS"  "ETN"  "ETR"  "EVRG" "EW"   "EXC"  "EXPD"
-#> [121] "EXR"  "FANG" "FAST" "FBHS" "FCX"  "FDX"  "FE"   "FITB" "FLS"  "FMC" 
-#> [131] "FRC"  "FRT"  "FTI"  "GD"   "GE"   "GILD" "GIS"  "GL"   "GS"   "GWW" 
-#> [141] "HAL"  "HBAN" "HCA"  "HES"  "HFC"  "HIG"  "HII"  "HOLX" "HON"  "HRL" 
-#> [151] "HSIC" "HST"  "HSY"  "HUM"  "HWM"  "ICE"  "IDXX" "IEX"  "IFF"  "ILMN"
-#> [161] "INCY" "INFO" "IP"   "IQV"  "IRM"  "ISRG" "ITW"  "IVZ"  "J"    "JBHT"
-#> [171] "JCI"  "JNJ"  "JPM"  "K"    "KEY"  "KHC"  "KIM"  "KMB"  "KMI"  "KO"  
-#> [181] "KR"   "KSU"  "L"    "LH"   "LHX"  "LIN"  "LLY"  "LMT"  "LNC"  "LNT" 
-#> [191] "LUV"  "LYB"  "MAA"  "MAS"  "MCK"  "MCO"  "MDLZ" "MDT"  "MET"  "MKC" 
-#> [201] "MKTX" "MLM"  "MMC"  "MMM"  "MNST" "MO"   "MOS"  "MPC"  "MRK"  "MRO" 
-#> [211] "MS"   "MSCI" "MTB"  "MTD"  "NDAQ" "NEE"  "NEM"  "NI"   "NLSN" "NOC" 
-#> [221] "NOV"  "NRG"  "NSC"  "NTRS" "NUE"  "O"    "ODFL" "OKE"  "OXY"  "PBCT"
-#> [231] "PCAR" "PEAK" "PEG"  "PEP"  "PFE"  "PFG"  "PG"   "PGR"  "PH"   "PKG" 
-#> [241] "PKI"  "PLD"  "PM"   "PNC"  "PNR"  "PNW"  "PPG"  "PPL"  "PRGO" "PRU" 
-#> [251] "PSA"  "PSX"  "PWR"  "PXD"  "RE"   "REG"  "REGN" "RF"   "RHI"  "RJF" 
-#> [261] "RMD"  "ROK"  "ROL"  "ROP"  "RSG"  "RTX"  "SBAC" "SCHW" "SEE"  "SHW" 
-#> [271] "SIVB" "SJM"  "SLB"  "SLG"  "SNA"  "SO"   "SPG"  "SPGI" "SRE"  "STE" 
-#> [281] "STT"  "STZ"  "SWK"  "SYF"  "SYK"  "SYY"  "TAP"  "TDG"  "TDY"  "TFC" 
-#> [291] "TFX"  "TMO"  "TROW" "TRV"  "TSN"  "TT"   "TXT"  "UAL"  "UDR"  "UHS" 
-#> [301] "UNH"  "UNM"  "UNP"  "UPS"  "URI"  "USB"  "VAR"  "VLO"  "VMC"  "VNO" 
-#> [311] "VRSK" "VRTX" "VTR"  "WAB"  "WAT"  "WBA"  "WEC"  "WELL" "WFC"  "WLTW"
-#> [321] "WM"   "WMB"  "WMT"  "WRB"  "WST"  "WY"   "XEL"  "XOM"  "XRAY" "XYL" 
-#> [331] "ZBH"  "ZION" "ZTS"
 colnames(stock_prices)[(r+1):p]
-#> [1] "XLP"  "XLE"  "XLF"  "XLV"  "XLI"  "XLB"  "XLRE" "XLU"
 selected_sectors <- c("Consumer Staples", "Energy", "Financials",
                       "Health Care", "Industrials", "Materials", 
                       "Real Estate", "Utilities")
@@ -130,14 +105,12 @@ node_labels[!mask] <- NA
 # plot network
 plot(net, vertex.size = c(rep(3, r), rep(5, q)),
      vertex.label = c(node_labels, selected_sectors),
-     vertex.label.cex = 0.8, vertex.label.dist = 1.0,
+     vertex.label.cex = 0.7, vertex.label.dist = 1.0,
      layout = layout_nicely(net),
      vertex.label.family = "Helvetica", vertex.label.color = "black",
      vertex.shape = c(rep("circle", r), rep("square", q)),
      edge.width = 4*E(net)$weight)
 ```
-
-<img src="man/figures/README-plot_sp500_stocks_network-1.png" width="75%" style="display: block; margin: auto;" />
 
 ## Citation
 If you made use of this software please consider citing:

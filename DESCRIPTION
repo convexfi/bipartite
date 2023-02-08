@@ -1,27 +1,24 @@
 Package: bipartite
 Title: Learning Bipartite Graphs: Heavy Tails and Multiple Components
 Version: 0.1.0
-Description: Learning bipartite and k-component bipartite graphs from financial datasets
+Date: 2023-02-02
+Description: Learning bipartite and k-component bipartite graphs from financial
+     datasets. This package contains implementations of the algorithms described
+     in the paper: Cardoso JVM, Ying J, and Palomar DP (2022).
+     Learning bipartite graphs: heavy tails and multiple components,
+     Advances in Neural Informations Processing Systems (NeurIPS).
 Author: Ze Vinicius
 Maintainer: Ze Vinicius <jvmirca@gmail.com>
-URL: https://github.com/mirca/fingraph/
-BugReports: https://github.com/mirca/fingraph/issues
-License: GPL-3 | file LICENSE
+URL: https://github.com/convexfi/bipartite/
+BugReports: https://github.com/convexfi/bipartite/issues
+License: GPL-3
 Encoding: UTF-8
-LazyData: true
-Depends: spectralGraphTopology, devtools
-LinkingTo:
-    Rcpp,
-    RcppEigen
+Depends: spectralGraphTopology, CVXR, quadprog
 Imports:
-    Rcpp,
     MASS,
+    stats,
     progress,
-    igraph,
-    spectralGraphTopology,
-    mvtnorm,
+    mvtnorm
+Suggests:
     testthat
 RoxygenNote: 7.1.1
-Remotes:
-    mirca/spectralGraphTopology
-Suggests:

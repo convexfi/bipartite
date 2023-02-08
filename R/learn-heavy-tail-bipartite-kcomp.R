@@ -1,8 +1,24 @@
 library(spectralGraphTopology)
-library(CVXR)
-library(quadprog)
 
+#' @title Laplacian matrix of a k-component bipartite graph with heavy-tailed data
+#'
+#' Computes the Laplacian matrix of a k-component bipartite graph on the basis of an observed data matrix
+#' whose distribution is assumed to be Student-t.
+#'
+#' @param X a n x p data matrix, where p is the number of nodes in the graph and n is the number of observations.
+#' @param r number of nodes in the objects set.
+#' @param q number of nodes in the classes set.
+#' @param k number of components of the graph.
+#' @param nu degrees of freedom of the Student-t distribution.
+#' @param learning_rate gradient descent parameter.
+#' @param maxiter maximum number of iterations.
+#' @param reltol relative tolerance as a convergence criteria.
+#' @param init string denoting how to compute the initial graph or a r x q matrix with initial graph weights.
+#' @param verbose whether or not to show a progress bar during the iterations.
+#' @param record_objective whether or not to record the objective function value during iterations.
+#' @param backtrack whether or not to optimize the learning rate via backtracking.
 #' @export
+#' @import spectralGraphTopology
 learn_heavy_tail_kcomp_bipartite_graph <- function(X,
                                                    r,
                                                    q,

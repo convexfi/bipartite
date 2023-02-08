@@ -1,9 +1,23 @@
 library(spectralGraphTopology)
-library(CVXR)
-library(quadprog)
 
-
+#' @title Laplacian matrix of a k-component bipartite graph via Nie's method
+#'
+#' Computes the Laplacian matrix of a bipartite graph on the basis of an observed similarity matrix.
+#'
+#' @param S a p x p similarity matrix, where p is the number of nodes in the graph.
+#' @param r number of nodes in the objects set.
+#' @param q number of nodes in the classes set.
+#' @param k number of components of the graph.
+#' @param learning_rate gradient descent parameter.
+#' @param eta rank constraint hyperparameter.
+#' @param maxiter maximum number of iterations.
+#' @param reltol relative tolerance as a convergence criteria.
+#' @param verbose whether or not to show a progress bar during the iterations.
+#' @param record_objective whether or not to record the objective function value during iterations.
+#' @references Feiping Nie, Xiaoqian Wang, Cheng Deng, Heng Huang. Learning A Structured Optimal Bipartite Graph for Co-Clustering.
+#'             Advances in Neural Information Processing Systems (NIPS 2017)
 #' @export
+#' @import spectralGraphTopology
 learn_bipartite_graph_nie <- function(S,
                                       r,
                                       q,

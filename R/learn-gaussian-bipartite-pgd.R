@@ -1,8 +1,21 @@
 library(spectralGraphTopology)
-library(CVXR)
-library(quadprog)
 
+#' @title Laplacian matrix of a connected bipartite graph with Gaussian data
+#'
+#' Computes the Laplacian matrix of a bipartite graph on the basis of an observed data matrix.
+#'
+#' @param S a p x p covariance matrix, where p is the number of nodes in the graph.
+#' @param r number of nodes in the objects set.
+#' @param q number of nodes in the classes set.
+#' @param init string denoting how to compute the initial graph.
+#' @param learning_rate gradient descent parameter.
+#' @param maxiter maximum number of iterations.
+#' @param reltol relative tolerance as a convergence criteria.
+#' @param verbose whether or not to show a progress bar during the iterations.
+#' @param record_objective whether or not to record the objective function value during iterations.
+#' @param backtrack whether or not to optimize the learning rate via backtracking.
 #' @export
+#' @import spectralGraphTopology
 learn_connected_bipartite_graph_pgd <- function(S,
                                                 r,
                                                 q,

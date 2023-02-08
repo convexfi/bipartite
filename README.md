@@ -1,3 +1,12 @@
+---
+title: "bipartite README"
+output:
+  html_document:
+    keep_md: true
+---
+
+
+
 # bipartite
 
 This repo contains numerical implementations of algorithms to estimate weighted, undirected, (possibly k-component) bipartite graphs.
@@ -10,8 +19,8 @@ This repo contains numerical implementations of algorithms to estimate weighted,
 You can install the development version from GitHub:
 
 ```r
-> devtools::install_github("mirca/spectralGraphTopology")
-> devtools::install_github("mirca/bipartite")
+> devtools::install_github("convexfi/spectralGraphTopology")
+> devtools::install_github("convexfi/bipartite")
 ```
 
 #### Microsoft Windows
@@ -138,5 +147,3 @@ If you made use of this software please consider citing:
     [D. P. Palomar](https://www.danielppalomar.com) (2022).
     [Learning Bipartite Graphs: Heavy Tails and Multiple Components](https://mirca.github.io).
     [Advances in Neural Information Processing Systems](https://neurips.cc/Conferences/2022) (NeurIPS’22).
-
-## Links

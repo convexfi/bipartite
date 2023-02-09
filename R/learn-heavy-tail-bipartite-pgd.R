@@ -1,4 +1,5 @@
 library(spectralGraphTopology)
+library(quadprog)
 
 #' @title Laplacian matrix of a connected bipartite graph with heavy-tailed data
 #'
@@ -18,6 +19,7 @@ library(spectralGraphTopology)
 #' @param backtrack whether or not to optimize the learning rate via backtracking.
 #' @export
 #' @import spectralGraphTopology
+#' @import quadprog
 learn_heavy_tail_bipartite_graph_pgd <- function(X,
                                                  r,
                                                  q,
@@ -49,7 +51,7 @@ learn_heavy_tail_bipartite_graph_pgd <- function(X,
   J_qq <- matrix(1, q, q) / p
   if (init == "default") {
     # Laplacian initialization
-    Sinv <- MASS::ginv(cor(X))
+    Sinv <- MASS::ginv(stats::cor(X))
     L_ <- L(spectralGraphTopology:::w_init("naive", Sinv))
     # B initialization
     B <- as.matrix(-L_[1:r, (r+1):p] + 1e-5)

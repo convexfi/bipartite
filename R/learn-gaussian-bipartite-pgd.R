@@ -1,4 +1,5 @@
 library(spectralGraphTopology)
+library(quadprog)
 
 #' @title Laplacian matrix of a connected bipartite graph with Gaussian data
 #'
@@ -16,6 +17,7 @@ library(spectralGraphTopology)
 #' @param backtrack whether or not to optimize the learning rate via backtracking.
 #' @export
 #' @import spectralGraphTopology
+#' @import quadprog
 learn_connected_bipartite_graph_pgd <- function(S,
                                                 r,
                                                 q,

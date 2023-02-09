@@ -1,4 +1,5 @@
 library(spectralGraphTopology)
+library(quadprog)
 
 #' @title Laplacian matrix of a k-component bipartite graph via Nie's method
 #'
@@ -18,6 +19,7 @@ library(spectralGraphTopology)
 #'             Advances in Neural Information Processing Systems (NIPS 2017)
 #' @export
 #' @import spectralGraphTopology
+#' @import quadprog
 learn_bipartite_graph_nie <- function(S,
                                       r,
                                       q,

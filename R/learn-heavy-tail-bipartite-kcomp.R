@@ -1,4 +1,5 @@
 library(spectralGraphTopology)
+library(quadprog)
 
 #' @title Laplacian matrix of a k-component bipartite graph with heavy-tailed data
 #'
@@ -10,15 +11,16 @@ library(spectralGraphTopology)
 #' @param q number of nodes in the classes set.
 #' @param k number of components of the graph.
 #' @param nu degrees of freedom of the Student-t distribution.
+#' @param rho ADMM hyperparameter.
 #' @param learning_rate gradient descent parameter.
 #' @param maxiter maximum number of iterations.
 #' @param reltol relative tolerance as a convergence criteria.
 #' @param init string denoting how to compute the initial graph or a r x q matrix with initial graph weights.
 #' @param verbose whether or not to show a progress bar during the iterations.
 #' @param record_objective whether or not to record the objective function value during iterations.
-#' @param backtrack whether or not to optimize the learning rate via backtracking.
 #' @export
 #' @import spectralGraphTopology
+#' @import quadprog
 learn_heavy_tail_kcomp_bipartite_graph <- function(X,
                                                    r,
                                                    q,
@@ -49,7 +51,7 @@ learn_heavy_tail_kcomp_bipartite_graph <- function(X,
   Ones <- matrix(1, r, r)
   Iq <- diag(q)
   # Laplacian initialization
-  Sinv <- MASS::ginv(cor(X))
+  Sinv <- MASS::ginv(stats::cor(X))
   L_ <- L(spectralGraphTopology:::w_init("naive", Sinv))
   if (init == "default") {
     # B initialization

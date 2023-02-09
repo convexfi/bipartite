@@ -1,5 +1,4 @@
 set.seed(42)
-library(bipartite)
 library(igraph)
 library(CVXR)
 
@@ -12,8 +11,8 @@ test_that("test from_B_to_adjacency and from_B_to_laplacian", {
   Ltrue <- as.matrix(laplacian_matrix(bipartite))
   Atrue <- diag(diag(Ltrue)) - Ltrue
   B <- -Ltrue[1:r, (r+1):p]
-  expect_true(sum(abs(Ltrue - from_B_to_laplacian(B))) < 1e-10)
-  expect_true(sum(abs(Atrue - from_B_to_adjacency(B))) < 1e-10)
+  expect_true(sum(abs(Ltrue - finbipartite:::from_B_to_laplacian(B))) < 1e-10)
+  expect_true(sum(abs(Atrue - finbipartite:::from_B_to_adjacency(B))) < 1e-10)
 })
 
 test_that("solution for subproblem B is indeed optimal", {
@@ -23,11 +22,11 @@ test_that("solution for subproblem B is indeed optimal", {
   C <- matrix(runif(r * q), q, r)
   B <- matrix(runif(r * q), r, q)
   B <- B / rowSums(B)
-  obj_fun <- c(compute_obj_fun_subproblem_B(B, C))
+  obj_fun <- c(finbipartite:::compute_obj_fun_subproblem_B(B, C))
   for (i in 1:10) {
     H <- t(B) + 2 * (C - t(B) %*% K) / (2 + r)
-    B <- solve_subproblem_B_cvx(H)
-    obj_fun <- c(obj_fun, compute_obj_fun_subproblem_B(B, C))
+    B <- finbipartite:::solve_subproblem_B_cvx(H)
+    obj_fun <- c(obj_fun, finbipartite:::compute_obj_fun_subproblem_B(B, C))
   }
   expect_true(all((obj_fun[-1] - obj_fun[-length(obj_fun)]) <= 0))
 })
@@ -39,11 +38,11 @@ test_that("solve_subproblem_B_cvx and solve_subproblem_B_quadprog agree", {
   C <- matrix(runif(r * q), q, r)
   B <- matrix(runif(r * q), r, q)
   B <- B / rowSums(B)
-  obj_fun <- c(compute_obj_fun_subproblem_B(B, C))
+  obj_fun <- c(finbipartite:::compute_obj_fun_subproblem_B(B, C))
   for (i in 1:10) {
     H <- t(B) + 2 * (C - t(B) %*% K) / (2 + r)
-    B_cvx <- solve_subproblem_B_cvx(H)
-    B_quadprog <- solve_subproblem_B_quadprog(H)
+    B_cvx <- finbipartite:::solve_subproblem_B_cvx(H)
+    B_quadprog <- finbipartite:::solve_subproblem_B_quadprog(H)
     expect_true(sum(abs(B_cvx - B_quadprog) / sum(abs(B_quadprog))) < 1e-4)
   }
 })

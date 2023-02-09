@@ -1,4 +1,4 @@
 library(testthat)
-library(dualgraph)
+library(finbipartite)
 
-test_check("dualgraph")
+test_check("finbipartite")

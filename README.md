@@ -1,13 +1,4 @@
----
-title: "bipartite README"
-output:
-  html_document:
-    keep_md: true
----
-
-
-
-# bipartite
+# finbipartite
 
 This repo contains numerical implementations of algorithms to estimate weighted, undirected, (possibly k-component) bipartite graphs.
 
@@ -20,7 +11,7 @@ You can install the development version from GitHub:
 
 ```r
 > devtools::install_github("convexfi/spectralGraphTopology")
-> devtools::install_github("convexfi/bipartite")
+> devtools::install_github("convexfi/finbipartite")
 ```
 
 #### Microsoft Windows
@@ -35,7 +26,7 @@ library(fitHeavyTail)
 library(xts)
 library(quantmod)
 library(igraph)
-library(bipartite)
+library(finbipartite)
 library(readr)
 set.seed(42)
 

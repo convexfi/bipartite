@@ -17,6 +17,15 @@ library(quadprog)
 #' @param verbose whether or not to show a progress bar during the iterations.
 #' @param record_objective whether or not to record the objective function value during iterations.
 #' @param backtrack whether or not to optimize the learning rate via backtracking.
+#' @return A list containing possibly the following elements:
+#' \item{\code{laplacian}}{estimated Laplacian matrix}
+#' \item{\code{adjacency}}{estimated adjacency matrix}
+#' \item{\code{B}}{estimated graph weights matrix}
+#' \item{\code{maxiter}}{number of iterations taken to reach convergence}
+#' \item{\code{convergence}}{boolean flag to indicate whether or not the optimization converged}
+#' \item{\code{lr_seq}}{learning rate value per iteration}
+#' \item{\code{obj_seq}}{objective function value per iteration}
+#' \item{\code{elapsed_time}}{time taken per iteration until convergence is reached}
 #' @export
 #' @import spectralGraphTopology
 #' @import quadprog

@@ -15,6 +15,13 @@ library(quadprog)
 #' @param reltol relative tolerance as a convergence criteria.
 #' @param verbose whether or not to show a progress bar during the iterations.
 #' @param record_objective whether or not to record the objective function value during iterations.
+#' @return A list containing possibly the following elements:
+#' \item{\code{laplacian}}{estimated Laplacian matrix}
+#' \item{\code{adjacency}}{estimated adjacency matrix}
+#' \item{\code{B}}{estimated graph weights matrix}
+#' \item{\code{maxiter}}{number of iterations taken to reach convergence}
+#' \item{\code{convergence}}{boolean flag to indicate whether or not the optimization converged}
+#' \item{\code{obj_fun}}{objective function value per iteration}
 #' @references Feiping Nie, Xiaoqian Wang, Cheng Deng, Heng Huang. Learning A Structured Optimal Bipartite Graph for Co-Clustering.
 #'             Advances in Neural Information Processing Systems (NIPS 2017)
 #' @export

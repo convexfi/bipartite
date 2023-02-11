@@ -47,6 +47,19 @@ learn_heavy_tail_kcomp_bipartite_graph(
 
 \item{record_objective}{whether or not to record the objective function value during iterations.}
 }
+\value{
+A list containing possibly the following elements:
+\item{\code{laplacian}}{estimated Laplacian matrix}
+\item{\code{adjacency}}{estimated adjacency matrix}
+\item{\code{B}}{estimated graph weights matrix}
+\item{\code{maxiter}}{number of iterations taken to reach convergence}
+\item{\code{convergence}}{boolean flag to indicate whether or not the optimization converged}
+\item{\code{dual_residual}}{dual residual value per iteration}
+\item{\code{primal_residual}}{primal residual value per iteration}
+\item{\code{aug_lag}}{augmented Lagrangian value per iteration}
+\item{\code{rho_seq}}{constraint relaxation hyperparameter value per iteration}
+\item{\code{elapsed_time}}{time taken per iteration until convergence is reached}
+}
 \description{
 Laplacian matrix of a k-component bipartite graph with heavy-tailed data
 

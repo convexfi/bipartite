@@ -40,6 +40,15 @@ learn_bipartite_graph_nie(
 
 \item{record_objective}{whether or not to record the objective function value during iterations.}
 }
+\value{
+A list containing possibly the following elements:
+\item{\code{laplacian}}{estimated Laplacian matrix}
+\item{\code{adjacency}}{estimated adjacency matrix}
+\item{\code{B}}{estimated graph weights matrix}
+\item{\code{maxiter}}{number of iterations taken to reach convergence}
+\item{\code{convergence}}{boolean flag to indicate whether or not the optimization converged}
+\item{\code{obj_fun}}{objective function value per iteration}
+}
 \description{
 Laplacian matrix of a k-component bipartite graph via Nie's method
 

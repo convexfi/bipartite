@@ -24,6 +24,31 @@ library(quadprog)
 #' \item{\code{obj_fun}}{objective function value per iteration}
 #' @references Feiping Nie, Xiaoqian Wang, Cheng Deng, Heng Huang. Learning A Structured Optimal Bipartite Graph for Co-Clustering.
 #'             Advances in Neural Information Processing Systems (NIPS 2017)
+#' @examples
+#' library(finbipartite)
+#' library(igraph)
+#' set.seed(42)
+#' r <- 100
+#' q <- 10
+#' p <- r + q
+#'
+#' bipartite <- sample_bipartite(r, q, type="Gnp", p = 1, directed=FALSE)
+#' # randomly assign edge weights to connected nodes
+#' E(bipartite)$weight <- 1
+#' Lw <- as.matrix(laplacian_matrix(bipartite))
+#' B <- -Lw[1:r, (r+1):p]
+#' B[,] <- runif(length(B))
+#' B <- B / rowSums(B)
+#' Ltrue <- biparpie:::from_B_to_laplacian(B)
+#' X <- MASS::mvrnorm(n, rep(0, p), MASS::ginv(Ltrue))
+#' S <- cov(X)
+#' bipartite_graph <- learn_bipartite_graph_nie(S = S,
+#'                                              r = r,
+#'                                              q = q,
+#'                                              k = 1,
+#'                                              learning_rate = 5e-1,
+#'                                              eta = 0,
+#'                                              verbose=FALSE)
 #' @export
 #' @import spectralGraphTopology
 #' @import quadprog

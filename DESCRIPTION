@@ -10,7 +10,7 @@ Description: Learning bipartite and k-component bipartite graphs from financial
      Advances in Neural Informations Processing Systems" (NeurIPS).
 Authors@R: c(
   person("Ze", "Vinicius", role = c("cre", "aut"), email = "jvmirca@gmail.com")
-)
+  )
 URL: https://github.com/convexfi/bipartite/
 BugReports: https://github.com/convexfi/bipartite/issues
 License: GPL-3

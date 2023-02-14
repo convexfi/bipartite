@@ -5,7 +5,7 @@ This repo contains numerical implementations of algorithms to estimate weighted,
 
 ## Installation
 
-**bipartite** depends on the development version of **spectralGraphTopology**.
+**finbipartite** depends on the development version of **spectralGraphTopology**.
 
 You can install the development version from GitHub:
 

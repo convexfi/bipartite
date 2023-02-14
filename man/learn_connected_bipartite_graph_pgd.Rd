@@ -56,3 +56,26 @@ Laplacian matrix of a connected bipartite graph with Gaussian data
 
 Computes the Laplacian matrix of a bipartite graph on the basis of an observed data matrix.
 }
+\examples{
+library(finbipartite)
+library(igraph)
+set.seed(42)
+r <- 100
+q <- 10
+p <- r + q
+
+bipartite <- sample_bipartite(r, q, type="Gnp", p = 1, directed=FALSE)
+# randomly assign edge weights to connected nodes
+E(bipartite)$weight <- 1
+Lw <- as.matrix(laplacian_matrix(bipartite))
+B <- -Lw[1:r, (r+1):p]
+B[,] <- runif(length(B))
+B <- B / rowSums(B)
+Ltrue <- biparpie:::from_B_to_laplacian(B)
+X <- MASS::mvrnorm(n, rep(0, p), MASS::ginv(Ltrue))
+S <- cov(X)
+bipartite_graph <- learn_connected_bipartite_graph_pgd(S = S,
+                                                       r = r,
+                                                       q = q,
+                                                       verbose=FALSE)
+}

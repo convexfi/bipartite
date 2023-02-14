@@ -82,7 +82,7 @@ B <- -Lw[1:r, (r+1):p]
 B[,] <- runif(length(B))
 B <- B / rowSums(B)
 Ltrue <- biparpie:::from_B_to_laplacian(B)
-X <- MASS::mvrnorm(n, rep(0, p), MASS::ginv(Ltrue))
+X <- MASS::mvrnorm(100*p, rep(0, p), MASS::ginv(Ltrue))
 bipartite_graph <- learn_heavy_tail_kcomp_bipartite_graph(X = X,
                                                           r = r,
                                                           q = q,

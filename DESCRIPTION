@@ -8,8 +8,9 @@ Description: Learning bipartite and k-component bipartite graphs from financial
      <https://openreview.net/pdf?id=WNSyF9qZaMd>
      "Learning bipartite graphs: heavy tails and multiple components,
      Advances in Neural Informations Processing Systems" (NeurIPS).
-Author: Ze Vinicius
-Maintainer: Ze Vinicius <jvmirca@gmail.com>
+Authors@R: c(
+  person("Ze", "Vinicius", role = c("cre", "aut"), email = "jvmirca@gmail.com")
+)
 URL: https://github.com/convexfi/bipartite/
 BugReports: https://github.com/convexfi/bipartite/issues
 License: GPL-3

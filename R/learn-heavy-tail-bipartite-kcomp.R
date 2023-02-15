@@ -33,8 +33,8 @@ library(quadprog)
 #' library(finbipartite)
 #' library(igraph)
 #' set.seed(42)
-#' r <- 100
-#' q <- 10
+#' r <- 50
+#' q <- 5
 #' p <- r + q
 #'
 #' bipartite <- sample_bipartite(r, q, type="Gnp", p = 1, directed=FALSE)

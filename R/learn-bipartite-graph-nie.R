@@ -22,14 +22,15 @@ library(quadprog)
 #' \item{\code{maxiter}}{number of iterations taken to reach convergence}
 #' \item{\code{convergence}}{boolean flag to indicate whether or not the optimization converged}
 #' \item{\code{obj_fun}}{objective function value per iteration}
-#' @references Feiping Nie, Xiaoqian Wang, Cheng Deng, Heng Huang. Learning A Structured Optimal Bipartite Graph for Co-Clustering.
+#' @references Feiping Nie, Xiaoqian Wang, Cheng Deng, Heng Huang.
+#'             "Learning A Structured Optimal Bipartite Graph for Co-Clustering".
 #'             Advances in Neural Information Processing Systems (NIPS 2017)
 #' @examples
 #' library(finbipartite)
 #' library(igraph)
 #' set.seed(42)
-#' r <- 100
-#' q <- 10
+#' r <- 50
+#' q <- 5
 #' p <- r + q
 #'
 #' bipartite <- sample_bipartite(r, q, type="Gnp", p = 1, directed=FALSE)

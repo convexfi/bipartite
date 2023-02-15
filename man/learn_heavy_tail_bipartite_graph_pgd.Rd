@@ -65,8 +65,8 @@ whose distribution is assumed to be Student-t.
 library(finbipartite)
 library(igraph)
 set.seed(42)
-r <- 100
-q <- 10
+r <- 50
+q <- 5
 p <- r + q
 
 bipartite <- sample_bipartite(r, q, type="Gnp", p = 1, directed=FALSE)
@@ -76,7 +76,7 @@ Lw <- as.matrix(laplacian_matrix(bipartite))
 B <- -Lw[1:r, (r+1):p]
 B[,] <- runif(length(B))
 B <- B / rowSums(B)
-Ltrue <- biparpie:::from_B_to_laplacian(B)
+Ltrue <- finbipartite:::from_B_to_laplacian(B)
 X <- MASS::mvrnorm(100*p, rep(0, p), MASS::ginv(Ltrue))
 bipartite_graph <- learn_heavy_tail_bipartite_graph_pgd(X = X,
                                                         r = r,

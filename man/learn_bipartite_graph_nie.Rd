@@ -58,8 +58,8 @@ Computes the Laplacian matrix of a bipartite graph on the basis of an observed s
 library(finbipartite)
 library(igraph)
 set.seed(42)
-r <- 100
-q <- 10
+r <- 50
+q <- 5
 p <- r + q
 
 bipartite <- sample_bipartite(r, q, type="Gnp", p = 1, directed=FALSE)
@@ -69,7 +69,7 @@ Lw <- as.matrix(laplacian_matrix(bipartite))
 B <- -Lw[1:r, (r+1):p]
 B[,] <- runif(length(B))
 B <- B / rowSums(B)
-Ltrue <- biparpie:::from_B_to_laplacian(B)
+Ltrue <- finbipartite:::from_B_to_laplacian(B)
 X <- MASS::mvrnorm(100*p, rep(0, p), MASS::ginv(Ltrue))
 S <- cov(X)
 bipartite_graph <- learn_bipartite_graph_nie(S = S,
@@ -81,6 +81,7 @@ bipartite_graph <- learn_bipartite_graph_nie(S = S,
                                              verbose=FALSE)
 }
 \references{
-Feiping Nie, Xiaoqian Wang, Cheng Deng, Heng Huang. Learning A Structured Optimal Bipartite Graph for Co-Clustering.
+Feiping Nie, Xiaoqian Wang, Cheng Deng, Heng Huang.
+            "Learning A Structured Optimal Bipartite Graph for Co-Clustering".
             Advances in Neural Information Processing Systems (NIPS 2017)
 }

@@ -41,7 +41,7 @@ library(quadprog)
 #' B <- -Lw[1:r, (r+1):p]
 #' B[,] <- runif(length(B))
 #' B <- B / rowSums(B)
-#' Ltrue <- finbipartite:::from_B_to_laplacian(B)
+#' Ltrue <- finbipartite::from_B_to_laplacian(B)
 #' X <- MASS::mvrnorm(100*p, rep(0, p), MASS::ginv(Ltrue))
 #' bipartite_graph <- learn_heavy_tail_bipartite_graph_pgd(X = X,
 #'                                                         r = r,

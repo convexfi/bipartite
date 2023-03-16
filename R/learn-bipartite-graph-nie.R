@@ -40,7 +40,20 @@ library(quadprog)
 #' B <- -Lw[1:r, (r+1):p]
 #' B[,] <- runif(length(B))
 #' B <- B / rowSums(B)
-#' Ltrue <- finbipartite::from_B_to_laplacian(B)
+#' # utils functions
+#' from_B_to_laplacian <- function(B) {
+#'   A <- from_B_to_adjacency(B)
+#'   return(diag(rowSums(A)) - A)
+#' }
+#'
+#' from_B_to_adjacency <- function(B) {
+#'   r <- nrow(B)
+#'   q <- ncol(B)
+#'   zeros_rxr <- matrix(0, r, r)
+#'   zeros_qxq <- matrix(0, q, q)
+#'   return(rbind(cbind(zeros_rxr, B), cbind(t(B), zeros_qxq)))
+#' }
+#' Ltrue <- from_B_to_laplacian(B)
 #' X <- MASS::mvrnorm(100*p, rep(0, p), MASS::ginv(Ltrue))
 #' S <- cov(X)
 #' bipartite_graph <- learn_bipartite_graph_nie(S = S,

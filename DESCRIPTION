@@ -27,3 +27,7 @@ Suggests:
     testthat,
     igraph,
 RoxygenNote: 7.1.1
+VignetteBuilder:
+    knitr,
+    rmarkdown,
+    R.rsp

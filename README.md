@@ -136,5 +136,13 @@ If you made use of this software please consider citing:
 
 -   [J. V. de M. Cardoso](https://mirca.github.io), [J. Ying](https://github.com/jxying),
     [D. P. Palomar](https://www.danielppalomar.com) (2022).
-    [Learning Bipartite Graphs: Heavy Tails and Multiple Components](https://mirca.github.io).
+    [Learning Bipartite Graphs: Heavy Tails and Multiple Components](https://papers.nips.cc/paper_files/paper/2022/hash/5adff4d5402703418f7210a4004e1314-Abstract-Conference.html).
     [Advances in Neural Information Processing Systems](https://neurips.cc/Conferences/2022) (NeurIPS’22).
+
+## Links
+
+- [RFinance'23 Slides](https://github.com/mirca/rfinance-talk/blob/main/rfinance.pdf)
+- [NeurIPS’22 Slides](https://palomar.home.ece.ust.hk/papers/2022/CardosoYingPalomar-NeurIPS2022-slides.pdf)
+- [NeurIPS'22 Poster](https://palomar.home.ece.ust.hk/papers/2022/CardosoYingPalomar-NeurIPS2022-poster.pdf)
+- [NeurIPS'22 Supplementary Material](https://papers.nips.cc/paper_files/paper/2022/file/5adff4d5402703418f7210a4004e1314-Supplemental-Conference.pdf)
+- [CRAN Package](https://cran.r-project.org/package=finbipartite)
